@@ -1,5 +1,6 @@
 # Ignore data folder
 data/
+MLOpsVenv/
 
 # Ignore .env file
 .env
