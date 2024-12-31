@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Federated Learning IDS - Prediction</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Intrusion Detection</h1>
+            <p>Upload a CSV file to get predictions</p>
+        </header>
+        <main>
+            <form id="upload-form">
+                <div class="file-input">
+                    <label for="file" class="file-label">
+                        <span>Choose CSV File</span>
+                        <input type="file" id="file" name="file" accept=".csv" required>
+                    </label>
+                </div>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+            <div id="output" class="output hidden">
+                <h3>Predictions</h3>
+                <pre id="predictions"></pre>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; 2024 Federated Learning IDS. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
