@@ -1,11 +1,9 @@
 import numpy as np
-from sklearn.preprocessing import LabelEncoder
-from sklearn.feature_selection import mutual_info_classif
-from sklearn.model_selection import train_test_split
 from sklearn.decomposition import IncrementalPCA
 import pandas as pd
-from imblearn.over_sampling import SMOTE
+
 import warnings
+
 warnings.filterwarnings("ignore")
 
 def drop_duplicates(data):

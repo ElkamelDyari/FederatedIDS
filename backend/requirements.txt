@@ -1,0 +1,11 @@
+dagshub==0.4.2
+mlflow==2.19.0
+numpy==1.26.4
+pandas==2.2.3
+fastapi==0.115.6
+uvicorn==0.34.0
+scikit-learn==1.5.1
+python-multipart==0.0.20
+psutil==6.1.1
+xgboost==2.1.2
+python-dotenv==1.0.1

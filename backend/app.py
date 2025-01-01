@@ -3,8 +3,13 @@ from fastapi import FastAPI, File, UploadFile
 import pandas as pd
 import io
 import uvicorn
-from backend.utils.DataPreparation import load_data
-from backend.utils.LoadModel import retrieve_latest_registered_model
+#from backend.utils.DataPreparation import load_data use this for running from root
+#from backend.utils.LoadModel import retrieve_latest_registered_model use this for running from root
+
+from utils.DataPreparation import load_data
+
+from utils.LoadModel import retrieve_latest_registered_model
+
 
 from fastapi.middleware.cors import CORSMiddleware
 

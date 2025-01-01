@@ -3,7 +3,7 @@ import mlflow
 from mlflow.tracking import MlflowClient
 
 mlflow.set_tracking_uri("https://dagshub.com/ElkamelDyari/FederatedIDS.mlflow")
-dagshub.init(repo_owner='ElkamelDyari', repo_name='FederatedIDS', mlflow=True)
+#dagshub.init(repo_owner='ElkamelDyari', repo_name='FederatedIDS', mlflow=True)
 
 
 def retrieve_latest_registered_model(experiment_name):
