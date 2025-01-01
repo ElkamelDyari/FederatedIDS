@@ -12,14 +12,17 @@ body {
 }
 
 /* Container */
-.container {
-    width: 90%;
-    max-width: 600px;
+body .container {
+    width: 80%; /* Almost full-screen width */
+    max-width: 1300px; /* Set a larger max-width for ultra-wide screens */
     background: #fff;
-    padding: 20px;
+    padding: 20px; /* Add padding for a balanced layout */
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px auto; /* Center the container and add vertical spacing */
 }
+
+
 
 /* Header */
 header {
@@ -85,28 +88,44 @@ form {
     background: #218838;
 }
 
-/* Output */
+/* Predictions Container */
+.predictions-container {
+    max-height: 300px; /* Fixed height for scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+    background: #f8f9fa;
+    margin-bottom: 15px;
+}
+
+#predictions-table {
+    width: 100%; /* Table stretches to container width */
+    border-collapse: collapse;
+}
+
+#predictions-table th,
+#predictions-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ced4da; /* Table cell border */
+}
+
+#predictions-table th {
+    background-color: #2a7ae4; /* Header background */
+    color: #fff;
+}
+
+#predictions-table td {
+    background-color: #f8f9fa; /* Default cell background */
+}
+
+
+
+/* Output Section */
 .output {
     margin-top: 20px;
-    padding: 15px;
-    background: #e9ecef;
-    border-radius: 5px;
-    border: 1px solid #ced4da;
-}
+    display: flex;
+    flex-wrap: wrap;
 
-.output.hidden {
-    display: none;
-}
-
-output h3 {
-    margin-top: 0;
-    font-size: 16px;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 12px;
-    color: #888;
 }

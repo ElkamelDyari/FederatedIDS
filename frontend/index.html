@@ -24,7 +24,13 @@
             </form>
             <div id="output" class="output hidden">
                 <h3>Predictions</h3>
-                <pre id="predictions"></pre>
+                <div id="predictions-container" class="predictions-container">
+                    <table id="predictions-table" border="1" cellpadding="10" cellspacing="0">
+                        <thead id="predictions-header"></thead>
+                        <tbody id="predictions-body"></tbody>
+                    </table>
+                </div>
+                <button id="download-btn" class="download-btn hidden">Download Predictions</button>
             </div>
         </main>
         <footer>
