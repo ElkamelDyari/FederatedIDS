@@ -1,14 +1,6 @@
 import dagshub
 import mlflow
 from mlflow.tracking import MlflowClient
-from src.utils.DataUtils import load_data
-import sys
-import os
-
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../')))
-
-from src.utils.DataUtils import load_data
-
 
 mlflow.set_tracking_uri("https://dagshub.com/ElkamelDyari/FederatedIDS.mlflow")
 dagshub.init(repo_owner='ElkamelDyari', repo_name='FederatedIDS', mlflow=True)

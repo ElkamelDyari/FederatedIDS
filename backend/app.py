@@ -1,3 +1,4 @@
+import numpy as np
 from fastapi import FastAPI, File, UploadFile
 import pandas as pd
 import io
@@ -26,6 +27,9 @@ async def predict(file: UploadFile = File(...)):
     try:
         contents = await file.read()
         df = pd.read_csv(io.StringIO(contents.decode('utf-8')))
+        col_to_show = ["Destination Port", "Flow Duration", "Total Fwd Packets", "Total Backward Packets", "Flow Bytes/s", "Flow Packets/s"]
+        data_without_duplicates = df.drop_duplicates()
+        data_without_duplicates = data_without_duplicates[col_to_show]
         processed_data = load_data(df)
         attack_type_mapping = {
             0: "BENIGN",
@@ -39,7 +43,12 @@ async def predict(file: UploadFile = File(...)):
         }
         predictions = model.predict(processed_data)
         attack_type_predictions = [attack_type_mapping[pred] for pred in predictions]
-        return {"predictions": attack_type_predictions}
+        data_without_duplicates["Attack Type"] = attack_type_predictions
+        data_without_duplicates.replace([np.inf, -np.inf], np.nan, inplace=True)
+        data_without_duplicates['Flow Bytes/s'].fillna("NAN", inplace=True)
+        data_without_duplicates['Flow Packets/s'].fillna("NAN", inplace=True)
+
+        return {"predictions": data_without_duplicates.to_dict(orient="records")}
     except Exception as e:
         return {"error": str(e)}
 
