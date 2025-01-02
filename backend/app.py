@@ -3,10 +3,10 @@ from fastapi import FastAPI, File, UploadFile
 import pandas as pd
 import io
 import uvicorn
-#from backend.utils.DataPreparation import load_data use this for running from root
-#from backend.utils.LoadModel import retrieve_latest_registered_model use this for running from root
+#from backend.utils.DataPreparation import data_cleaning #use this for running from root
+#from backend.utils.LoadModel import retrieve_latest_registered_model #use this for running from root
 
-from utils.DataPreparation import load_data
+from utils.DataPreparation import data_cleaning
 
 from utils.LoadModel import retrieve_latest_registered_model
 
@@ -26,7 +26,10 @@ app.add_middleware(
 
 
 model = retrieve_latest_registered_model("Federated Learning IDS")
-
+# Get the input signature
+input_signature = model.metadata.get_input_schema()
+number_required_columns = len(input_signature)
+# Print the number of required fields
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
     try:
@@ -35,7 +38,7 @@ async def predict(file: UploadFile = File(...)):
         col_to_show = ["Destination Port", "Flow Duration", "Total Fwd Packets", "Total Backward Packets", "Flow Bytes/s", "Flow Packets/s"]
         data_without_duplicates = df.drop_duplicates()
         data_without_duplicates = data_without_duplicates[col_to_show]
-        processed_data = load_data(df)
+        processed_data = data_cleaning(df, n_featues=number_required_columns)
         attack_type_mapping = {
             0: "BENIGN",
             1: "Bot",

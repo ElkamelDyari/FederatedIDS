@@ -19,7 +19,9 @@ form.addEventListener("submit", async (e) => {
     formData.append("file", file);
 
     try {
-        const response = await fetch("http://localhost:8080/predict", {
+        //const response = await fetch("http://localhost:8080/predict", {      // use this if you want to fetch from localhost
+        //fetch from azure backend servie
+        const response = await fetch("https://backend-app-service-h9a4f0dyf8bzdbbb.francecentral-01.azurewebsites.net/predict", {   // use this if you want to fetch from azure
             method: "POST",
             body: formData,
         });

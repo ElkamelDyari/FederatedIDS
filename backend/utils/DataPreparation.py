@@ -102,7 +102,7 @@ def preprocessing(data):
     return data
 
 
-def feature_engineering(data):
+def feature_engineering(data, n_features):
     """
         This function performs feature engineering on the provided Pandas DataFrame.
         It performs following tasks:
@@ -144,17 +144,17 @@ def feature_engineering(data):
     X = data[columns_selected].values
 
 
-    ipca = IncrementalPCA(n_components=22, batch_size=500)
+    ipca = IncrementalPCA(n_components=n_features, batch_size=500)
     for batch in np.array_split(X, len(X) // 500):
         ipca.partial_fit(batch)
 
     transformed_features = ipca.transform(X)
 
-    new_data = pd.DataFrame(transformed_features, columns=[f'PC{i + 1}' for i in range(22)])
+    new_data = pd.DataFrame(transformed_features, columns=[f'PC{i + 1}' for i in range(n_features)])
 
     return new_data
 
-def data_cleaning(data):
+def data_cleaning(data, n_featues = 22):
     """
         This function will clean incoming data. It leverages the `DataPreprocessing` and
         `FeatureEngineering` methods from the `src.utils` module to preprocess and
@@ -171,27 +171,8 @@ def data_cleaning(data):
         cleaned_data = data_cleaning(data)
     """
     data = preprocessing(data)
-    data = feature_engineering(data)
+    data = feature_engineering(data, n_featues)
     return data
 
-
-
-def load_data(data):
-    """
-        This function performs the following steps:
-        - Loads a dataset from a CSV file specified by the 'path' parameter.
-        - Cleans this dataset by calling a predefined `data_cleaning` function on it.
-        - Splits this cleaned dataset into features (X) and the target (y), by dropping the column 'Target'.
-        - Further splits these features and target into training and test sets.
-
-        Parameters:
-        path (str): The path to the CSV file which is to be loaded.
-
-        Returns:
-        tuple: The training and test sets split from the input data. The tuple structure is: (X_train, X_test, y_train, y_test).
-    """
-
-    data = data_cleaning(data)
-    return data
 
 

@@ -2,13 +2,19 @@ import sys
 import os
 import dagshub
 import mlflow
-
+from dotenv import load_dotenv
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
 from src.utils.FederatedUtils import register_global_model, create_model_from_params, FederatedLearningApp
 
+load_dotenv()
 # Initialize DagsHub MLflow
-mlflow.set_tracking_uri("https://dagshub.com/ElkamelDyari/FederatedIDS.mlflow")
-dagshub.init(repo_owner='ElkamelDyari', repo_name='FederatedIDS', mlflow=True)
+tracking_uri = os.getenv('TRAKING_URI')
+repo_owner = os.getenv('REPO_OWNER')
+repo_name = os.getenv('REPO_NAME')
+
+mlflow.set_tracking_uri(tracking_uri)
+
+dagshub.init(repo_owner=repo_owner, repo_name=repo_name, mlflow=True)
 
 # Define the paths to the client data
 CLIENT_DATA_PATHS = [
