@@ -8,7 +8,9 @@ load_dotenv()
 # Initialize DagsHub MLflow
 tracking_uri = os.getenv('TRAKING_URI')
 mlflow.set_tracking_uri(tracking_uri)
-#dagshub.init(repo_owner='ElkamelDyari', repo_name='FederatedIDS', mlflow=True)
+#repo_owner = os.getenv('REPO_OWNER')
+#repo_name = os.getenv('REPO_NAME')
+#dagshub.init(repo_owner=repo_owner, repo_name=repo_name, mlflow=True)
 
 
 def retrieve_latest_registered_model(experiment_name):
