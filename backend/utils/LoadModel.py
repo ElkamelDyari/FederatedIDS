@@ -1,8 +1,13 @@
 import dagshub
 import mlflow
 from mlflow.tracking import MlflowClient
+from dotenv import load_dotenv
+import os
 
-mlflow.set_tracking_uri("https://dagshub.com/ElkamelDyari/FederatedIDS.mlflow")
+load_dotenv()
+# Initialize DagsHub MLflow
+tracking_uri = os.getenv('TRAKING_URI')
+mlflow.set_tracking_uri(tracking_uri)
 #dagshub.init(repo_owner='ElkamelDyari', repo_name='FederatedIDS', mlflow=True)
 
 
