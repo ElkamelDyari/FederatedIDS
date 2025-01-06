@@ -2,6 +2,8 @@ Dataset link : https://www.unb.ca/cic/datasets/ids-2017.html
 
 website link : https://frontend-app-service-fcd3hqdygrfxdee8.francecentral-01.azurewebsites.net/
 
+![Description](https://github.com/ElkamelDyari/FederatedIDS/blob/master/Untitled%20video%20-%20Made%20with%20Clipchamp.gif)
+
 dataset 
 
 ## Data Overview
