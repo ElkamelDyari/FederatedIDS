@@ -1,8 +1,3 @@
-<video width="320" height="240" controls>
-  <source src="[URL_OF_YOUR_VIDEO](https://github.com/ElkamelDyari/FederatedIDS/blob/master/Untitled%20video%20-%20Made%20with%20Clipchamp%20(1).mp4)" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
 Dataset link : https://www.unb.ca/cic/datasets/ids-2017.html
 
 website link : https://frontend-app-service-fcd3hqdygrfxdee8.francecentral-01.azurewebsites.net/
